@@ -1,0 +1,2 @@
+version,device name,recording epoch time,recording time,recording timezone,platform,appVersion,device id,sensors,sampleRateMs,standardisation,platform version
+3,2201117PG,1772645757392,2026-03-04_17-35-57,Africa/Kigali,android,1.54.0,93d91f86-f368-46d4-bace-d47fb66abfbb,Accelerometer|Gyroscope|Annotation|TotalAcceleration|GyroscopeUncalibrated|AccelerometerUncalibrated,20|20||20|20|20,true,33

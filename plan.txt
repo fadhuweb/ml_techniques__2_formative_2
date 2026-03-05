@@ -1,0 +1,380 @@
+✅ PHASE 1: Background & Use Case (Report Section 1)
+Goal:
+
+1 strong paragraph.
+
+Your Use Case (Recommended Example)
+
+Smart activity recognition for:
+
+Fitness tracking
+
+Fall detection
+
+Smart home automation
+
+Explain briefly:
+
+Why activity recognition matters
+
+Why HMM is suitable (sequential, probabilistic, handles noisy sensor data)
+
+Keep this concise.
+
+✅ PHASE 2: Data Collection & Quality (10/10 Target)
+What You Have
+
+25 recordings
+
+4 activities:
+
+Standing
+
+Walking
+
+Jumping
+
+Still
+
+10 seconds each
+
+50 Hz sampling
+
+Accelerometer + Gyroscope
+
+2.1 What You Must Document in Report
+
+Include:
+
+Phone model used
+
+Sensor Logger app used
+
+Sampling rate set to 50 Hz
+
+Why 50 Hz was chosen
+
+Recording duration (10 seconds)
+
+Total duration per activity
+
+How you ensured consistency (phone position)
+
+How you handled row mismatch
+
+2.2 Handling Row Mismatch (Important!)
+
+Since row counts differ:
+
+We will:
+
+Align by seconds_elapsed
+
+Use nearest timestamp merging
+
+Explain in report:
+
+Minor discrepancies in row counts occurred due to independent sensor timing. Signals were aligned using nearest-neighbor time matching to preserve sequential integrity.
+
+That earns depth marks.
+
+✅ PHASE 3: Preprocessing & Windowing
+
+Now tailored to your data.
+
+3.1 Merge Strategy
+
+For each sample:
+
+Final format:
+
+| seconds_elapsed | ax | ay | az | gx | gy | gz |
+
+3.2 Windowing Strategy (Locked In)
+
+Since:
+
+50 Hz sampling
+
+10 seconds recordings (~500 samples)
+
+Use:
+
+2-second windows
+
+100 samples per window
+
+50% overlap (50 samples shift)
+
+Why?
+
+Captures full walking cycles
+
+Stabilizes variance for standing
+
+Enough resolution for FFT
+
+Produces ~9 windows per recording
+
+Total ~225 feature vectors
+
+Document this clearly.
+
+✅ PHASE 4: Feature Extraction (10/10 Target)
+
+You must include:
+
+≥2 time-domain features
+
+≥1 frequency-domain feature
+
+Proper normalization
+
+Justification
+
+🎯 Final Feature Set (Optimized for Your Activities)
+Time-Domain Features
+
+From accelerometer magnitude:
+
+Mean
+
+Variance
+
+RMS (Root Mean Square)
+
+Signal Magnitude Area (SMA)
+
+From gyroscope:
+
+Variance
+
+Mean
+
+Frequency-Domain Features (From FFT)
+
+From accelerometer magnitude:
+
+Dominant frequency
+
+Spectral energy
+
+This cleanly separates:
+
+Activity	Characteristic
+Still	Near zero energy
+Standing	Very low variance
+Walking	Clear dominant frequency (~1–2 Hz)
+Jumping	High energy bursts
+3.3 Normalization
+
+Use:
+
+Z-score normalization
+
+Explain:
+
+Prevents large-scale features dominating Gaussian HMM
+
+Improves convergence
+
+This is required for Excellent.
+
+✅ PHASE 5: HMM Modeling (15/15 Target)
+5.1 Hidden States
+
+4 states:
+
+Standing
+
+Walking
+
+Jumping
+
+Still
+
+5.2 Emission Type
+
+Use:
+
+Gaussian HMM (continuous emissions)
+
+5.3 Training
+
+Use either:
+
+hmmlearn (recommended)
+
+or custom numpy implementation
+
+Must include:
+
+Baum–Welch training
+
+Log-likelihood convergence check
+
+Not fixed iterations only.
+
+5.4 Viterbi Algorithm
+
+Use to:
+
+Decode most likely activity sequence
+
+Plot:
+
+Predicted vs actual states over time.
+
+5.5 Required Visualizations
+
+You must include:
+
+Transition matrix heatmap
+
+Emission probability visualization
+
+Log-likelihood convergence plot
+
+Decoded activity timeline
+
+These secure 15/15.
+
+✅ PHASE 6: Evaluation on Unseen Data (10/10 Target)
+
+This is critical.
+
+6.1 Collect New Test Data
+
+At least:
+
+2 new recordings
+
+Not used in training
+
+Same 4 activities
+
+Document:
+
+New session?
+
+Different environment?
+
+Different participant?
+
+6.2 Compute Metrics
+
+For each activity:
+
+Sensitivity
+
+Specificity
+
+Overall accuracy
+
+Also include:
+
+Confusion Matrix
+
+Transition matrix visualization
+
+Emission distribution plots
+
+6.3 Fill Required Table
+Activity	Samples	Sensitivity	Specificity	Accuracy
+
+Include personalized discussion:
+
+Which states confused?
+
+Why standing vs still may overlap?
+
+Did walking and jumping separate well?
+
+Deep reflection earns marks.
+
+✅ PHASE 7: GitHub Structure (10/10 Target)
+
+Repository should look like:
+
+Human-Activity-HMM/
+│
+├── data/
+│   ├── training/
+│   ├── testing/
+│
+├── notebooks/
+│   └── hmm_model.ipynb
+│
+├── report/
+│   └── report.pdf
+│
+├── README.md
+
+Include collaboration table in report:
+
+Member	Task	Commits
+
+Ensure balanced commits.
+
+✅ PHASE 8: Final Report Structure (Strict)
+
+4–5 pages maximum.
+
+1. Background & Motivation
+
+1 paragraph only.
+
+2. Data Collection & Preprocessing
+
+Sensors
+
+Sampling rate
+
+Windowing logic
+
+Merging method
+
+Visualizations
+
+3. Feature Extraction
+
+Feature list
+
+Justification
+
+Normalization explanation
+
+4. HMM Implementation
+
+Model definition
+
+Training method
+
+Viterbi
+
+Visualizations
+
+5. Results & Evaluation
+
+Confusion matrix
+
+Metrics table
+
+Analysis
+
+6. Discussion & Conclusion
+
+Hardest activity
+
+Effect of noise
+
+Improvements
+
+🎯 Why This Plan Scores Excellent
+Rubric Area	Why You Score High
+Data	Clean 50 Hz + timestamp merging + explanation
+Features	Time + FFT + justification + normalization
+Implementation	Viterbi + Baum–Welch + convergence
+Evaluation	True unseen data + full metrics
+GitHub	Structured + collaboration
+Report	Professional + concise + visual

@@ -1,0 +1,2 @@
+version,device name,recording epoch time,recording time,recording timezone,platform,appVersion,device id,sensors,sampleRateMs,standardisation
+3,Infinix X6528,1772593836395,2026-03-04_03-10-36,Africa/Nairobi,android,1.52.0,a06b8097-89e3-449f-af32-718f9bc6f81b,Accelerometer|Gyroscope|Annotation|TotalAcceleration|GyroscopeUncalibrated|AccelerometerUncalibrated,20|20||20|20|20,false
