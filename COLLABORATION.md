@@ -1,4 +1,4 @@
-Page_Up# Collaboration & Team Contribution
+ Collaboration & Team Contribution
 
 ## Team Members
 - **Fadhlullah Abdulazeez** (fadhuweb) - Team Lead
