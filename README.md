@@ -62,11 +62,10 @@ ml_techniques__2_formative_2/
                           - **Data Collection Parameters:**
                          
                           - | Team Member | Device | Sampling Rate | Window Size | Duration per Activity |
-                          - |---|---|---|---|---|
-                          - | Fadhlullah Abdulazeez | iPhone | 50 Hz | 2.0 seconds | 5-10 seconds |
+                          - | Fadhlullah Abdulazeez | Android | 50 Hz | 2.0 seconds | 5-10 seconds |
                           - | Ayomide Agbaje | Android | 50 Hz | 2.0 seconds | 5-10 seconds |
                          
-                          - **Sampling Rate Harmonization:**
+                          - **Sampling Rate Harmonisation:**
                           - Both devices were configured to sample at **50 Hz** (50 measurements per second), meeting the Nyquist sampling theorem requirements for capturing human motion frequencies (0-20 Hz). Window size of 2.0 seconds (100 samples) was selected to balance:
                           - - **Temporal resolution:** Captures enough motion variation to distinguish activities
                             - - **Computational efficiency:** Manageable feature dimensionality
